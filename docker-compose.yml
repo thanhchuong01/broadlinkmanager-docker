@@ -1,0 +1,17 @@
+services:
+  broadlinkmanager:
+    image: broadlinkmanager:latest  # build your image and update this line 
+    container_name: broadlinkmanager
+    network_mode: host
+    restart: unless-stopped
+# enable this and refer IP of interface can reach broadlink devices 
+#    environment:
+#      DISCOVERY_IP_LIST: "192.x.x.x" 
+    volumes:
+      - ./data:/app/data
+    command:
+      - python
+      - broadlinkmanager.py
+# enable this and refer your IP of broadlink device
+#      - --dst-ip
+#      - 192.168.3.218
